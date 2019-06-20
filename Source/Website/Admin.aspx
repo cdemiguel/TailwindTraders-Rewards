@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Admin.Master" CodeBehind="Admin.aspx.cs" Inherits="Tailwind.Traders.Rewards.Web.Admin" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="Login" runat="server">
-
     <div class="container">
         <div class="content__text admin-header">
             <asp:Label ID="Label1" runat="server"></asp:Label>
@@ -11,29 +10,33 @@
         </div>
 
         <div class="admin-message">
-            <p class="content__title">Create customers or Orders</p>
+            <p class="content__title">Create customers</p>
         </div>
+
+        <asp:Panel ID="dvMessageAdmin" runat="server" visible="false" >
+            <asp:Label ID="lblMessageAdmin" runat="server" />
+        </asp:Panel>
 
         <div class="tabbable">
             <%--<!-- Only required for left/right tabs -->--%>
             <ul class="nav nav-tabs admin-tabs">
                 <li class="active"><a href="#tab1" data-toggle="tab">Customers</a></li>
-                <li><a href="#tab2" data-toggle="tab">Orders</a></li>
+                <%--<li><a href="#tab2" data-toggle="tab">Orders</a></li>--%>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab1">
                     <fieldset class="admin-form">
                         <h2 class="title">Customers</h2>
                         <label>Email</label>
-                        <asp:TextBox ID="Customer_Email" type="Email" CssCssClass="admin-form-input" runat="server" placeholder="email@email.com" required />
+                        <asp:TextBox ID="Customer_Email" type="Email" CssClass="admin-form-input" runat="server" placeholder="email@email.com" required />
                         <label>Account Code</label>
-                        <asp:TextBox ID="Customer_AccountCode" runat="server" CssCssClass="admin-form-input" type="text" placeholder="4A3Dc8" />
+                        <asp:TextBox ID="Customer_AccountCode" runat="server" CssClass="admin-form-input" type="text" placeholder="4A3Dc8" />
                         <label>First Name</label>
-                        <asp:TextBox ID="Customer_FirstName" runat="server" CssCssClass="admin-form-input" type="text" placeholder="john"/>
+                        <asp:TextBox ID="Customer_FirstName" runat="server" CssClass="admin-form-input" type="text" placeholder="john"/>
                         <label>Last Name</label>
-                        <asp:TextBox ID="Customer_LastName" runat="server" CssCssClass="admin-form-input" type="text" placeholder="Doe Doe"/>
+                        <asp:TextBox ID="Customer_LastName" runat="server" CssClass="admin-form-input" type="text" placeholder="Doe Doe"/>
                         <label>Address</label>
-                        <asp:TextBox ID="Customer_FirstAddress" runat="server" CssCssClass="admin-form-input" type="text" placeholder="385 Akuehe Trail"/>
+                        <asp:TextBox ID="Customer_FirstAddress" runat="server" CssClass="admin-form-input" type="text" placeholder="385 Akuehe Trail"/>
                         <label>City</label>
                         <asp:TextBox ID="Customer_City" runat="server" CssClass="admin-form-input" type="text" placeholder="Hobart"/>
                         <label>Country</label>
@@ -55,7 +58,7 @@
                         <asp:Button ID="btnSaveCustomer" runat="server" OnClick="OnClickAddCustomer" Text="Save customer" CssClass="btn btn-primary" />
                     </fieldset>
                 </div>
-                <div class="tab-pane" id="tab2">
+                <%--<div class="tab-pane" id="tab2">
                     <fieldset class="admin-form">
                         <h2 class="title"">Orders</h2>
                         <label>Order code</label>
@@ -72,7 +75,7 @@
                         <asp:TextBox runat="server" CssClass="admin-form-input" type="text" placeholder="100.00"/>
                         <button class="btn btn-primary" type="submit" >Submit form</button>
                     </fieldset>
-                </div>
+                </div>--%>
             </div>
         </div>
     </div>

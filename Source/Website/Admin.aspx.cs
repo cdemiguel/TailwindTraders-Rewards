@@ -17,6 +17,9 @@ namespace Tailwind.Traders.Rewards.Web
             {
                 FormsAuthentication.RedirectToLoginPage();
             }
+
+            dvMessageAdmin.Visible = false;
+            lblMessageAdmin.Text = string.Empty;
         }
 
         protected void OnClickSignout(object sender, EventArgs e)
@@ -67,9 +70,11 @@ namespace Tailwind.Traders.Rewards.Web
 
         protected void OnClickAddCustomer(object sender, EventArgs e)
         {
-            if(!IsValidCustomer())
+            if (!IsValidCustomer())
             {
-                // TODO mirar si mostramos mensaje de error
+                dvMessageAdmin.Visible = true;
+                lblMessageAdmin.Text = "It was not possible to create a customer";
+                dvMessageAdmin.CssClass = "alert alert-error";
                 return;
             }
 
@@ -85,12 +90,16 @@ namespace Tailwind.Traders.Rewards.Web
                 Country = Customer_Country.Text.Trim(),
                 ZipCode = Customer_ZipCode.Text.Trim(),
                 Website = Customer_Website.Text.Trim(),
-                Active = true,
+                Active = Customer_Active.Checked,
                 Enrrolled = EnrollmentStatusEnum.Uninitialized,
                 PhoneNumber = Customer_PhoneNumber.Text.Trim(),
                 MobileNumber = Customer_MobileNumber.Text.Trim(),
                 FaxNumber = Customer_FaxNumber.Text.Trim()
             };
+
+            dvMessageAdmin.Visible = true;
+            lblMessageAdmin.Text = "User created successfully";
+            dvMessageAdmin.CssClass = "alert alert-success";
 
             CustomerData.AddCustomer(customer);
         }
